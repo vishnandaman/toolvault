@@ -10,11 +10,11 @@ export function generateStaticParams() {
 }
 
 type CategoryPageParams = {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 };
 
 export async function generateMetadata({ params }: CategoryPageParams): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug } = params;
   const category = resolveCategoryFromSlug(slug);
 
   if (!category) {
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: CategoryPageParams): Promise<
 }
 
 export default async function CategoryPage({ params }: CategoryPageParams) {
-  const { slug } = await params;
+  const { slug } = params;
   const category = resolveCategoryFromSlug(slug);
 
   if (!category) {

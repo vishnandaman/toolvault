@@ -10,8 +10,6 @@ export const metadata: Metadata = {
     "Search, filter, and sort the latest tools across design, content, automation, and support use cases.",
 };
 
-export const revalidate = 60 * 60;
-
 export default function ToolsPage() {
   const tools = getAllTools();
   const categories = getAllCategories();
