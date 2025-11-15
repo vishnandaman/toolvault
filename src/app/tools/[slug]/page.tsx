@@ -6,16 +6,14 @@ import { buildCategorySlug, getAllTools, getToolBySlug } from "@/lib/tools";
 import { cn } from "@/lib/utils";
 import { ToolLogo } from "@/components/tool-logo";
 
-export const revalidate = 60 * 60;
-
-type ToolPageParams = {
-  params: Promise<{ slug: string }>;
-};
-
 export function generateStaticParams() {
   const tools = getAllTools();
   return tools.map((tool) => ({ slug: tool.slug }));
 }
+
+type ToolPageParams = {
+  params: Promise<{ slug: string }>;
+};
 
 export async function generateMetadata({ params }: ToolPageParams): Promise<Metadata> {
   const { slug } = await params;

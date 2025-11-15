@@ -4,15 +4,13 @@ import { notFound } from "next/navigation";
 import { ToolCard } from "@/components/tool-card";
 import { filterToolsByCollection, getCollectionBySlug, getCollections } from "@/lib/tools";
 
-type CollectionPageParams = {
-  params: Promise<{ slug: string }>;
-};
-
-export const revalidate = 60 * 60;
-
 export function generateStaticParams() {
   return getCollections().map((collection) => ({ slug: collection.slug }));
 }
+
+type CollectionPageParams = {
+  params: Promise<{ slug: string }>;
+};
 
 export async function generateMetadata({ params }: CollectionPageParams): Promise<Metadata> {
   const { slug } = await params;

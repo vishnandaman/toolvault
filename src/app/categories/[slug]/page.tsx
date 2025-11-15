@@ -3,17 +3,15 @@ import { notFound } from "next/navigation";
 import { ToolCard } from "@/components/tool-card";
 import { buildCategorySlug, filterToolsByCategory, getAllCategories, resolveCategoryFromSlug } from "@/lib/tools";
 
-type CategoryPageParams = {
-  params: Promise<{ slug: string }>;
-};
-
-export const revalidate = 60 * 60;
-
 export function generateStaticParams() {
   return getAllCategories().map((category) => ({
     slug: buildCategorySlug(category),
   }));
 }
+
+type CategoryPageParams = {
+  params: Promise<{ slug: string }>;
+};
 
 export async function generateMetadata({ params }: CategoryPageParams): Promise<Metadata> {
   const { slug } = await params;
