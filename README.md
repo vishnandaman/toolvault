@@ -2,6 +2,7 @@
 
 A curated directory of AI tools built with Next.js App Router. Helps product teams discover and compare the best software for design, marketing, automation, and customer support workflows.
 
+**Live Demo:** [https://toolvault-1tdf.vercel.app/](https://toolvault-1tdf.vercel.app/)
 ## Features
 
 - Home page with featured tools and curated collections
@@ -99,6 +100,8 @@ npm run format
 ```
 
 ## Deployment
+
+**Live Site:** [https://toolvault-1tdf.vercel.app/](https://toolvault-1tdf.vercel.app/)
 
 Deploy to Vercel by connecting your GitHub repository:
 
