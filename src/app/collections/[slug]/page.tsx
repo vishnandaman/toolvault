@@ -9,11 +9,11 @@ export function generateStaticParams() {
 }
 
 type CollectionPageParams = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: CollectionPageParams): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const collection = getCollectionBySlug(slug);
 
   if (!collection) {
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: CollectionPageParams): Promis
 }
 
 export default async function CollectionPage({ params }: CollectionPageParams) {
-  const { slug } = params;
+  const { slug } = await params;
   const collection = getCollectionBySlug(slug);
 
   if (!collection) {

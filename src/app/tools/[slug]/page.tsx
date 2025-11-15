@@ -12,11 +12,11 @@ export function generateStaticParams() {
 }
 
 type ToolPageParams = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: ToolPageParams): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const tool = getToolBySlug(slug);
 
   if (!tool) {
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: ToolPageParams): Promise<Meta
 }
 
 export default async function ToolDetailPage({ params }: ToolPageParams) {
-  const { slug } = params;
+  const { slug } = await params;
   const tool = getToolBySlug(slug);
 
   if (!tool) {
